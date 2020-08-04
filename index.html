@@ -5,32 +5,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manga Meme</title>
-  <script src="main.js"></script>
-  <style>
-    #box {
-      display: block;
-      background-color: red;
-      width: 128px;
-      height: 128px;
-      position: absolute;
-    }
-
-    html {
-      height: 100%;
-    }
-
-    body {
-      min-height: 100%;
-    }
-  </style>
+  <script src="js/main.js"></script>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <div id="box" draggable="true"></div>
-  <!-- <img src="test0.png" alt="test"> -->
-  <!-- <textarea name="text" id="text" cols="30" rows="10" draggable="true"></textarea> -->
+  <!-- <div id="box0" class="box"></div> -->
+  <textarea id="text0" class="text" cols="30" rows="10"></textarea>
+  <img id="meme0" class="meme" src="image/test0.png" alt="meme">
+  <script>
+    const offset = { x: 0, y: 0 }
 
+    function getPosition(element) {
+      const rect = element.getBoundingClientRect()
+      const x = rect.x + window.scrollX
+      const y = rect.y + window.scrollY
+      return { x, y }
+    }
 
+    function dragStartHandler(e) {
+      e.dataTransfer.setData('text/plain', e.target.id)
+      const position = getPosition(e.target)
+      offset.x = e.pageX - position.x
+      offset.y = e.pageY - position.y
+    }
+
+    function dragOverHandler(e) {
+      e.preventDefault()
+    }
+
+    function dropHandler(e) {
+      e.preventDefault()
+      const id = e.dataTransfer.getData('text/plain')
+      const box = document.getElementById(id)
+      const newX = e.pageX - offset.x
+      const newY = e.pageY - offset.y
+      box.style.top = `${newY}px`;
+      box.style.left = `${newX}px`;
+    }
+
+    // const box = document.getElementById('box0')
+    // box.draggable = true;
+    // box.addEventListener('dragstart', dragStartHandler)
+
+    const text = document.getElementById('text0')
+    text.draggable = true;
+    text.addEventListener('dragstart', dragStartHandler)
+
+    const meme = document.getElementById('meme0')
+    meme.addEventListener('dragover', dragOverHandler)
+    meme.addEventListener('drop', dropHandler)
+  </script>
 </body>
 
 </html>

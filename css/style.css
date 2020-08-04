@@ -1,0 +1,30 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+
+.box {
+    display: block;
+    background-color: red;
+    width: 128px;
+    height: 128px;
+    position: absolute;
+}
+
+.text {
+    display: block;
+    position: absolute;
+    background-color: transparent;
+}

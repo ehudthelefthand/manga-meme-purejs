@@ -5,57 +5,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manga Meme</title>
-  <script src="js/main.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kodchasan:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <!-- <div id="box0" class="box"></div> -->
-  <textarea id="text0" class="text" cols="30" rows="10"></textarea>
+  <label id="box" class="box">
+    <textarea id="text" class="text" rows="1" autofocus></textarea>
+  </label>
   <img id="meme0" class="meme" src="image/test0.png" alt="meme">
   <script>
-    const offset = { x: 0, y: 0 }
-
-    function getPosition(element) {
-      const rect = element.getBoundingClientRect()
-      const x = rect.x + window.scrollX
-      const y = rect.y + window.scrollY
-      return { x, y }
+    // I get this manually
+    const props = {
+      top: '166px',
+      left: '44px',
+      width: '109px',
+      height: '150px'
     }
 
-    function dragStartHandler(e) {
-      e.dataTransfer.setData('text/plain', e.target.id)
-      const position = getPosition(e.target)
-      offset.x = e.pageX - position.x
-      offset.y = e.pageY - position.y
-    }
+    const box = document.getElementById('box')
+    box.style.top = props.top;
+    box.style.left = props.left;
+    box.style.width = props.width;
+    box.style.height = props.height;
 
-    function dragOverHandler(e) {
-      e.preventDefault()
-    }
+    const text = document.getElementById('text')
+    text.addEventListener('input', (e) => {
+      text.style.height = 'auto'
+      text.style.height = `${text.scrollHeight}px`
+    })
 
-    function dropHandler(e) {
-      e.preventDefault()
-      const id = e.dataTransfer.getData('text/plain')
-      const box = document.getElementById(id)
-      const newX = e.pageX - offset.x
-      const newY = e.pageY - offset.y
-      box.style.top = `${newY}px`;
-      box.style.left = `${newX}px`;
-    }
+    // const offset = { x: 0, y: 0 }
 
-    // const box = document.getElementById('box0')
-    // box.draggable = true;
-    // box.addEventListener('dragstart', dragStartHandler)
+    // function getPosition(element) {
+    //   const rect = element.getBoundingClientRect()
+    //   const x = rect.x + window.scrollX
+    //   const y = rect.y + window.scrollY
+    //   return { x, y }
+    // }
 
-    const text = document.getElementById('text0')
-    text.draggable = true;
-    text.addEventListener('dragstart', dragStartHandler)
+    // function dragStartHandler(e) {
+    //   e.dataTransfer.setData('text/plain', e.target.id)
+    //   const position = getPosition(e.target)
+    //   offset.x = e.pageX - position.x
+    //   offset.y = e.pageY - position.y
+    // }
 
-    const meme = document.getElementById('meme0')
-    meme.addEventListener('dragover', dragOverHandler)
-    meme.addEventListener('drop', dropHandler)
+    // function dragOverHandler(e) {
+    //   e.preventDefault()
+    // }
+
+    // function dropHandler(e) {
+    //   e.preventDefault()
+    //   const id = e.dataTransfer.getData('text/plain')
+    //   const box = document.getElementById(id)
+    //   const newX = e.pageX - offset.x
+    //   const newY = e.pageY - offset.y
+    //   box.style.top = `${newY}px`;
+    //   box.style.left = `${newX}px`;
+    // }
+
+    // // const box = document.getElementById('box0')
+    // // box.draggable = true;
+    // // box.addEventListener('dragstart', dragStartHandler)
+
+    // console.log(text.style);
+    // // text.draggable = true;
+    // // text.addEventListener('dragstart', dragStartHandler)
+
+    // const meme = document.getElementById('meme0')
+    // meme.addEventListener('dragover', dragOverHandler)
+    // meme.addEventListener('drop', dropHandler)
   </script>
 </body>
 

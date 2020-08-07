@@ -1,3 +1,4 @@
+- mark ตำแหน่ง และ size ของ textarea
 - ทำให้ text embed ในรูป ณ ตำแหน่งที่ text วางอยู่
 - download รูปที่ embed text แล้วได้
 - ปรับแต่ง text editor

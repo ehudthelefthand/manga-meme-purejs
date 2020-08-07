@@ -12,19 +12,38 @@ html {
 
 body {
     min-height: 100%;
+    font-size: 62.5%;
+    font-family: 'Kodchasan', sans-serif;
 }
-
 
 .box {
     display: block;
-    background-color: red;
-    width: 128px;
-    height: 128px;
+    background-color: rosybrown;
+    width: 400px;
+    height: 400px;
     position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    background-color: transparent;
 }
 
-.text {
+.box .text {
+    width: 100%;
+    font-size: 1.2rem;
+    font-style: italic;
+    resize: vertical;
+    text-align: center;
+    background-color: transparent;
+    overflow-y: hidden;
+    resize: none;
+    outline: none;
+    border: none;
+    font-family: 'Kodchasan', sans-serif;
+}
+
+/* .text {
     display: block;
     position: absolute;
     background-color: transparent;
-}
+} */
